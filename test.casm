@@ -1,0 +1,5 @@
+def u8* msg
+def u8* msg2
+load msg "Test tesT"
+load msg2 "Teset"
+ret 0

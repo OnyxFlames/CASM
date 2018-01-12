@@ -1,0 +1,7 @@
+def i32 x
+def i32 y
+load x 10
+load y 20
+eq x y
+jmp -1
+ret 0
