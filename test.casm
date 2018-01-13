@@ -2,4 +2,6 @@ def u8* msg
 def u8* msg2
 load msg "Test tesT"
 load msg2 "Teset"
+printf %s\n msg
+printf %s\n msg2
 ret 0

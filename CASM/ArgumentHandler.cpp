@@ -21,12 +21,21 @@ void ArgumentHandler::eval()
 		}
 		if (arguments[i] == "-Sc" && (i + 1) <= arguments.size())
 		{
+			flags.emit_preprocessed_c = false;
 			flags.emit_c = true;
+			flags.emit_asm = false;
+			flags.run = false;
+		}
+		if (arguments[i] == "-Se" && (i + 1) <= arguments.size())
+		{
+			flags.emit_preprocessed_c = true;
+			flags.emit_c = false;
 			flags.emit_asm = false;
 			flags.run = false;
 		}
 		if (arguments[i] == "-S" && (i + 1) <= arguments.size())
 		{
+			flags.emit_preprocessed_c = false;
 			flags.emit_asm = true;
 			flags.emit_c = false;
 			flags.run = false;

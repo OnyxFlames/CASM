@@ -66,5 +66,12 @@ int main(int argc, char* argv[])
 		c_output << output;
 		c_output.close();
 	}
+	if (ah.get_flags().emit_preprocessed_c)
+	{
+		if (fs::exists(ah.get_flags().output_file))
+			fs::remove(ah.get_flags().output_file);
+		std::string cmd = "gcc output.c " + std::string("-E -Os") + " -o " + ah.get_flags().output_file;
+		system(cmd.c_str());
+	}
 	return 0;
 }
