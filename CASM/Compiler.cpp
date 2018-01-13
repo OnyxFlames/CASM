@@ -1,5 +1,24 @@
 #include "Compiler.hpp"
 
+#include <array>
+
+bool is_datatype(const std::string dt)
+{
+	// Datatype table
+	std::array<const char*, 12> datatypes
+	{
+		"i8", "u8", "i16", "u16",
+		"i32", "u32", "i64", "u64",
+		"f32", "f64", "u8*", "memptr",
+	};
+	for (const auto& _dt : datatypes)
+		if (dt == _dt)
+			return true;
+		else
+			continue;
+	return false;
+}
+
 const std::string compile(const std::vector<std::string> inst)
 {
 	std::string output = "";
@@ -11,6 +30,12 @@ const std::string compile(const std::vector<std::string> inst)
 		if (inst[i] == "def" && (i + 2) <= inst.size())
 		{
 			line_number--;
+			
+			if (!is_datatype(inst[i + 1]))
+			{
+				std::cerr << "Error: '" << inst[i + 1] << "' is not a datatype in CASM.\n"; std::exit(1);
+			}
+
 			if (inst[i + 1] == "u8*")
 				output += "char* " + inst[i + 2] + ";\n";
 			else if (inst[i + 1] == "memptr")
