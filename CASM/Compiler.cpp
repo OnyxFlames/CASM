@@ -12,10 +12,8 @@ bool is_datatype(const std::string dt)
 		"f32", "f64", "u8*", "memptr",
 	};
 	for (const auto& _dt : datatypes)
-		if (dt == _dt)
-			return true;
-		else
-			continue;
+		if (dt == _dt) return true;
+		else continue;
 	return false;
 }
 

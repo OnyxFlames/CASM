@@ -29,6 +29,7 @@ public:
 	ArgumentHandler(int _argc, char* _argv[]);
 	void eval();
 	FlagStruct& get_flags() { return flags; }
+	void print_help();
 	~ArgumentHandler();
 };
 

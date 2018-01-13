@@ -7,6 +7,8 @@ namespace fs = std::experimental::filesystem;
 ArgumentHandler::ArgumentHandler(int _argc, char * _argv[])
 {
 	prog_name = _argv[0];
+	if (_argc == 1)
+		print_help();
 	for (int i = 1; i < _argc; i++)
 		arguments.push_back(_argv[i]);
 }
@@ -49,6 +51,16 @@ void ArgumentHandler::eval()
 			}
 		}
 	}
+}
+
+void ArgumentHandler::print_help()
+{
+	std::cout << prog_name << " <file> <flags>\n"
+		"-o <value> - rename output file\n"
+		"-Sc - emit 'c-assembly' to output file\n"
+		"-S - emit assembly to output file\n"
+		"-Se - emit proprocessed C to output file\n";
+	std::exit(1);
 }
 
 ArgumentHandler::~ArgumentHandler()
