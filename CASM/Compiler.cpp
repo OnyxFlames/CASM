@@ -45,7 +45,10 @@ const std::string compile(const std::vector<std::string> inst)
 		if (inst[i] == "printf" && (i + 2) <= inst.size())
 		{
 			output += "_LINE_" + std::to_string(line_number) + ": ";
-			output += "fprintf\n(\nstdout,\n\"" + inst[i + 1] + "\",\n" + inst[i + 2] + "\n);\n";
+			if ((inst[i + 1])[0] == '"' && (inst[i + 1])[inst[i + 1].size()-1] == '"')
+				output += "fprintf\n(\nstdout,\n" + inst[i + 1] + ",\n" + inst[i + 2] + "\n);\n";
+			else
+				output += "fprintf\n(\nstdout,\n\"" + inst[i + 1] + "\",\n" + inst[i + 2] + "\n);\n";
 			i += 2;
 		}
 		if (inst[i] == "scanf" && (i + 2) <= inst.size())
@@ -94,6 +97,12 @@ const std::string compile(const std::vector<std::string> inst)
 		{
 			output += "_LINE_" + std::to_string(line_number) + ": ";
 			output += inst[i + 3] + " = " + inst[i + 1] + " / " + inst[i + 2] + ";\n";
+			i += 3;
+		}
+		if (inst[i] == "exp" && (i + 3) <= inst.size())
+		{
+			output += "_LINE_" + std::to_string(line_number) + ": ";
+			output += inst[i + 3] + " = pow(" + inst[i + 1] + ", " + inst[i + 2] + ");\n";
 			i += 3;
 		}
 		if (inst[i] == "eq" && (i + 2) <= inst.size())

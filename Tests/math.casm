@@ -1,0 +1,32 @@
+def u32 i
+def u32 j
+
+load i 0
+load j i-1
+
+printf "%u\n" i
+printf "%u\n" j
+
+def i32 k
+add i j k
+printf "%d\n" k
+
+sub j k k
+printf "%d\n" k
+
+def i64 x
+def i64 y
+
+load x 100
+load y 200
+
+mul x y x
+printf "%d\n" x
+
+div x y x
+printf "%d\n" x
+
+exp x y y
+printf "%d\n" x
+
+ret 0

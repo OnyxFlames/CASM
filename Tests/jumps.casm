@@ -1,0 +1,8 @@
+ujmp 2
+hlt 0
+printf "First print\n" ""
+eq 0 0
+jmp 2
+printf "I'm not used!\n" ""
+lt 0 1
+jmp -6

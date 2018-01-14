@@ -1,0 +1,5 @@
+io.write("Running test 'math.lua'\n")
+os.execute("mkdir Output")
+os.execute("casm ../Tests/math.casm -S -o Output/test_math.S")
+os.execute("casm ../Tests/math.casm -Sc -o Output/test_math.c")
+os.execute("casm ../Tests/math.casm -o Output/test_math.exe")
