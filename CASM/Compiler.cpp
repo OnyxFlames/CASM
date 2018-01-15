@@ -2,21 +2,6 @@
 
 #include <array>
 
-bool is_datatype(const std::string dt)
-{
-	// Datatype table
-	std::array<const char*, 12> datatypes
-	{
-		"i8", "u8", "i16", "u16",
-		"i32", "u32", "i64", "u64",
-		"f32", "f64", "u8*", "memptr",
-	};
-	for (const auto& _dt : datatypes)
-		if (dt == _dt) return true;
-		else continue;
-	return false;
-}
-
 const std::string compile(const std::vector<std::string> inst)
 {
 	std::string output = "";

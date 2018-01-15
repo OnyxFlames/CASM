@@ -8,10 +8,10 @@
 #include <experimental/filesystem>
 namespace fs = std::experimental::filesystem;
 
+#include "Utils.hpp"
+
 #include "HeaderParts.hpp"
 
-
-bool is_datatype(const std::string dt);
 const std::string compile(const std::vector<std::string> inst);
 
 const std::string get_header();

@@ -42,6 +42,14 @@ void ArgumentHandler::eval()
 			flags.emit_c = false;
 			flags.run = false;
 		}
+		if (arguments[i] == "--tokenize" && (i + 1) <= arguments.size())
+		{
+			flags.emit_preprocessed_c = false;
+			flags.emit_asm = false;
+			flags.emit_c = false;
+			flags.run = false;
+			flags.tokenize = true;
+		}
 		else
 		{
 			if (fs::exists(arguments[i]) && flags.looking_for_input)

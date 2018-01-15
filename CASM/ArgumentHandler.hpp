@@ -13,6 +13,7 @@ struct FlagStruct
 	bool emit_asm = false;
 	bool emit_c = false;
 	bool emit_preprocessed_c = false;
+	bool tokenize = false;
 	// technically it does emit c,
 	// but this flags tells the compiler not to remove it after
 	std::string output_file = "output.exe";

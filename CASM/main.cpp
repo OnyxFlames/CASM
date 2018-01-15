@@ -2,6 +2,7 @@
 #include <fstream>
 #include <vector>
 #include <string>
+#include <chrono>
 
 #include <experimental/filesystem>
 
@@ -19,6 +20,17 @@ int main(int argc, char* argv[])
 {
 	ArgumentHandler ah(argc, argv);
 	ah.eval();
+	// if we're tokenizing then don't worry about the rest
+	if (ah.get_flags().tokenize)
+	{
+		auto tokens = tokenize2(ah.get_flags().input_file);
+		for (const auto& tok : tokens)
+			std::cout << "Value: '" << tok.value << "' Type: " << to_token_name(tok.type) << "\n";
+		if (tokens.size() == 0)
+			std::cout << "No tokens found.\n";
+		return 0;
+	}
+
 	std::string output = get_header();
 	output += get_datatypes();
 	output += get_functional();

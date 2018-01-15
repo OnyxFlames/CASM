@@ -1,0 +1,7 @@
+def u8* msg
+load msg "stringtest"
+load msg "string test"
+def f32 x
+load x 100.f
+load x 100f
+load x 6969
