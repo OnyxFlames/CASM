@@ -31,6 +31,7 @@ public:
 	void eval();
 	FlagStruct& get_flags() { return flags; }
 	void print_help();
+	void print_version();
 	~ArgumentHandler();
 };
 

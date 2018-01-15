@@ -1,8 +1,9 @@
 #include "ArgumentHandler.hpp"
 
 #include <experimental/filesystem>
-
 namespace fs = std::experimental::filesystem;
+
+#include "Definitions.hpp"
 
 ArgumentHandler::ArgumentHandler(int _argc, char * _argv[])
 {
@@ -17,6 +18,8 @@ void ArgumentHandler::eval()
 {
 	for (size_t i = 0; i < arguments.size(); i++)
 	{
+		if (arguments[i] == "-v" || arguments[i] == "--version")
+			print_version();
 		if (arguments[i] == "-o" && (i + 1) <= arguments.size())
 		{
 			flags.output_file = arguments[++i];
@@ -65,9 +68,17 @@ void ArgumentHandler::print_help()
 {
 	std::cout << prog_name << " <file> <flags>\n"
 		"-o <value> - rename output file\n"
-		"-Sc - emit 'c-assembly' to output file\n"
 		"-S - emit assembly to output file\n"
-		"-Se - emit proprocessed C to output file\n";
+		"-Sc - emit 'c-assembly' to output file\n"
+		"-Se - emit proprocessed C to output file\n"
+		"--tokenize - Gather all of the token information in a given file\n";
+	std::exit(1);
+}
+
+void ArgumentHandler::print_version()
+{
+	std::cout << "Version: " << VERSION_COMPLETE
+		<< "\nPlatform: " << PLATFORM;
 	std::exit(1);
 }
 

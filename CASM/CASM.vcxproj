@@ -121,6 +121,7 @@
   <ItemGroup>
     <ClInclude Include="ArgumentHandler.hpp" />
     <ClInclude Include="Compiler.hpp" />
+    <ClInclude Include="Definitions.hpp" />
     <ClInclude Include="HeaderParts.hpp" />
     <ClInclude Include="Token.hpp" />
     <ClInclude Include="Tokenizer.hpp" />
